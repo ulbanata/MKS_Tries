@@ -36,11 +36,11 @@ describe("Trie", function () {
     describe("iterate", function () {
       it("should include correct strings", function () {
         expect(trie.iterate()).toEqual([]);
-        expect(trie.iterate(trie.head.children["d"].children["o"].children["g"])).toEqual(["g"]);
-        expect(trie.iterate(trie.head.children["d"].children["o"])).toEqual(["og", "ot", "o"]);
-        expect(trie.iterate(trie.head.children["d"])).toEqual(["dog", "dot", "do", "dad"]);
-        expect(trie.iterate(trie.head.children["b"])).toEqual(["bird"]);
-        expect(trie.iterate(trie.head)).toEqual(["dog", "dot", "do", "dad", "bird"]);
+        expect(trie.iterate(trie.head.children["d"].children["o"].children["g"]).sort()).toEqual(["g"]);
+        expect(trie.iterate(trie.head.children["d"].children["o"]).sort()).toEqual(["og", "ot", "o"].sort());
+        expect(trie.iterate(trie.head.children["d"]).sort()).toEqual(["dog", "dot", "do", "dad"].sort());
+        expect(trie.iterate(trie.head.children["b"]).sort()).toEqual(["bird"].sort());
+        expect(trie.iterate(trie.head).sort()).toEqual(["dog", "dot", "do", "dad", "bird"].sort());
       });
     });
 
@@ -58,12 +58,12 @@ describe("Trie", function () {
 
     describe("search", function () {
       it("should return all strings with the same prefix", function () {
-        expect(trie.search("xyz")).toEqual([]);
-        expect(trie.search("dog")).toEqual(["dog"]);
-        expect(trie.search("do")).toEqual(["dog", "dot", "do"]);
-        expect(trie.search("d")).toEqual(["dog", "dot", "do", "dad"]);
-        expect(trie.search("")).toEqual(["dog", "dot", "do", "dad", "bird"]);
-        expect(trie.search()).toEqual(["dog", "dot", "do", "dad", "bird"]);
+        expect(trie.search("xyz").sort()).toEqual([]);
+        expect(trie.search("dog").sort()).toEqual(["dog"].sort());
+        expect(trie.search("do").sort()).toEqual(["dog", "dot", "do"].sort());
+        expect(trie.search("d").sort()).toEqual(["dog", "dot", "do", "dad"].sort());
+        expect(trie.search("").sort()).toEqual(["dog", "dot", "do", "dad", "bird"].sort());
+        expect(trie.search().sort()).toEqual(["dog", "dot", "do", "dad", "bird"].sort());
       });
     });
   });
