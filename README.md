@@ -12,7 +12,7 @@ Implement the following methods in `Trie`:
 
 # Run
 
-Open `index.html` to run the autocomplet plugin.
+Open `index.html` to run the autocomplete plugin.
 
 # Tests
 
